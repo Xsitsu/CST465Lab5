@@ -9,10 +9,13 @@ namespace CST465Lab5.Models
     public class TrickOrTreaterModel
     {
         [Required]
+        [Display(Name = "Name")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Favorite Candy")]
         public string FavoriteCandy { get; set; }
         [Required]
+        [Display(Name = "Costume")]
         public string Costume { get; set; }
 
         static string[] _candyList = new string[]
