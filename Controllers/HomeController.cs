@@ -10,7 +10,13 @@ namespace CST465Lab5.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Index(TrickOrTreaterModel model)
         {
             return View();
         }
