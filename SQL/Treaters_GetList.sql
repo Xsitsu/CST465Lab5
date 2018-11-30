@@ -2,5 +2,5 @@
 AS
 SELECT Treaters.Name AS Name, Candy.ProductName AS Candy, Costumes.Costume AS Costume
 FROM Treaters
-JOIN Candy ON Treaters.FavoriteCandyID = Candy.Id
-JOIN Costumes ON Treaters.CostumeID = Costume.Id;
+LEFT JOIN Candy ON Treaters.FavoriteCandyID = Candy.Id
+LEFT JOIN Costumes ON Treaters.CostumeID = Costumes.Id;
