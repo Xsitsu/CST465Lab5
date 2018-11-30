@@ -1,4 +1,4 @@
-﻿@model TrickOrTreaterModel
+﻿@model List<TrickOrTreaterModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -10,19 +10,28 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
-        <input type="text" asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name"></span>
+        <label for="Name" class="control-label"></label>
+        <input type="text" id="Name" name="Name" class="form-control" />
+        @Html.ValidationMessage("Name")
     </div>
     <div class="form-group">
-        <label asp-for="FavoriteCandy" class="control-label"></label>
-        <select asp-for="FavoriteCandy" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CandyList))"></select>
-        <span asp-validation-for="FavoriteCandy"></span>
+        <label for="FavoriteCandy" class="control-label"></label>
+        <select id="FavoriteCandy" name="FavoriteCandy" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CandyList()))"></select>
+        @Html.ValidationMessage("FavoriteCandy")
     </div>
     <div class="form-group">
-        <label asp-for="Costume" class="control-label"></label>
-        <select asp-for="Costume" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CostumeList))"></select>
-        <span asp-validation-for="Costume"></span>
+        <label for="Costume" class="control-label"></label>
+        <select id="Costume" name="Costume" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CostumeList()))"></select>
+        @Html.ValidationMessage("Costume")
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+@foreach (var treater in Model)
+    {
+<div>
+    <h3>Name: @treater.Name</h3>
+    Favorite Candy: @treater.FavoriteCandy<br />
+    Costume: @treater.Costume<br />
+</div>
+    }

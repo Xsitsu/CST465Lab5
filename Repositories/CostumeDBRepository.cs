@@ -13,9 +13,7 @@ namespace CST465Lab5.Repositories
     {
         protected string GetConnectionString()
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddUserSecrets<Startup>();
             var configuration = builder.Build();
             string connectionstring = configuration.GetConnectionString("DB_Halloween");
             return connectionstring;

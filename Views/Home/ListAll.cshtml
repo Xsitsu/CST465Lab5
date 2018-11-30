@@ -1,0 +1,18 @@
+﻿@model List<TrickOrTreaterModel>
+
+@{
+    ViewData["Title"] = "ListAll";
+}
+
+<h2>ListAll</h2>
+
+@{ 
+    foreach (var treater in Model)
+    {
+<div>
+    <h3>Name: @treater.Name</h3>
+    Favorite Candy: @treater.FavoriteCandy<br />
+    Costume: @treater.Costume<br />
+</div>
+    }
+}

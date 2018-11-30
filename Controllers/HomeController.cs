@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CST465Lab5.Models;
+using CST465Lab5.Repositories;
 
 namespace CST465Lab5.Controllers
 {
@@ -13,12 +14,19 @@ namespace CST465Lab5.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(new TreaterDBRepository().GetList());
         }
         [HttpPost]
         public IActionResult Index(TrickOrTreaterModel model)
         {
-            return View();
+            new TreaterDBRepository().Insert(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult ListAll()
+        {
+            return View(new TreaterDBRepository().GetList());
         }
 
         public IActionResult About()

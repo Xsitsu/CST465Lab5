@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CST465Lab5.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,35 +19,13 @@ namespace CST465Lab5.Models
         [Display(Name = "Costume")]
         public string Costume { get; set; }
 
-        static string[] _candyList = new string[]
+        static public List<string> CandyList()
         {
-            "Twix",
-            "Starburst",
-            "M&M"
-        };
-        static string[] _costumeList = new string[]
-        {
-            "Witch",
-            "Ghost",
-            "Vampire",
-            "Zombie"
-        };
-
-        static public string[] CandyList
-        {
-            get
-            {
-                return _candyList;
-            }
-
+            return new CandyDBRepository().GetList();
         }
-        static public string[] CostumeList
+        static public List<string> CostumeList()
         {
-            get
-            {
-                return _costumeList;
-            }
-
+            return new CostumeDBRepository().GetList();
         }
     }
 }
