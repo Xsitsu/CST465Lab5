@@ -8,6 +8,7 @@ namespace CST465Lab5.Models
 {
     public class CostumeModel
     {
+        public int Id { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }

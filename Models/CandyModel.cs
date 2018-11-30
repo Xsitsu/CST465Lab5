@@ -8,6 +8,7 @@ namespace CST465Lab5.Models
 {
     public class CandyModel
     {
+        public int Id { get; set; }
         [Required]
         [Display(Name = "Product Name")]
         public string ProductName { get; set; }

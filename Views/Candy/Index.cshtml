@@ -1,0 +1,38 @@
+﻿@model List<CandyModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+<form method="post" asp-action="Insert" asp-controller="Candy">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="ProductName" class="control-label"></label>
+        <input type="text" id="ProductName" name="ProductName" class="form-control" />
+        @Html.ValidationMessage("ProductName")
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form method="post" asp-action="Delete" asp-controller="Candy">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="ProductName" class="control-label"></label>
+        <select id="FavoriteCandy" name="ProductName" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CandyList()))"></select>
+        @Html.ValidationMessage("ProductName")
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+<h4>Candies</h4>
+<ul>
+    @foreach (var candy in Model)
+    {
+        <li>@candy.ProductName</li>
+    }
+</ul>

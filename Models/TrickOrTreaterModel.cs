@@ -21,7 +21,7 @@ namespace CST465Lab5.Models
 
         static public List<string> CandyList()
         {
-            return new CandyDBRepository().GetList();
+            return new CandyDBRepository().GetListString();
         }
         static public List<string> CostumeList()
         {
