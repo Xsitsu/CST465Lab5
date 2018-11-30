@@ -21,7 +21,7 @@
     @Html.AntiForgeryToken()
     <div class="form-group">
         <label for="ProductName" class="control-label"></label>
-        <select id="FavoriteCandy" name="ProductName" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CandyList()))"></select>
+        <select id="ProductName" name="ProductName" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CandyList()))"></select>
         @Html.ValidationMessage("ProductName")
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

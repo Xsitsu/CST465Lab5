@@ -1,0 +1,38 @@
+﻿@model List<CostumeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+<form method="post" asp-action="Insert" asp-controller="Costume">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="Name" class="control-label"></label>
+        <input type="text" id="Name" name="Name" class="form-control" />
+        @Html.ValidationMessage("Name")
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form method="post" asp-action="Delete" asp-controller="Costume">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="Name" class="control-label"></label>
+        <select id="Name" name="Name" class="form-control" asp-items="@(new SelectList(TrickOrTreaterModel.CostumeList()))"></select>
+        @Html.ValidationMessage("Name")
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+<h4>Costumes</h4>
+<ul>
+    @foreach (var costume in Model)
+    {
+        <li>@costume.Name</li>
+    }
+</ul>

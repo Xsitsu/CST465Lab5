@@ -25,7 +25,7 @@ namespace CST465Lab5.Models
         }
         static public List<string> CostumeList()
         {
-            return new CostumeDBRepository().GetList();
+            return new CostumeDBRepository().GetListString();
         }
     }
 }

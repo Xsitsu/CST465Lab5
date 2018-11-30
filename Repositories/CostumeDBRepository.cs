@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CST465Lab5.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,9 +19,9 @@ namespace CST465Lab5.Repositories
             string connectionstring = configuration.GetConnectionString("DB_Halloween");
             return connectionstring;
         }
-        public List<string> GetList()
+        public List<CostumeModel> GetList()
         {
-            List<string> candy = new List<string>();
+            List<CostumeModel> costume = new List<CostumeModel>();
             using (SqlConnection connection = new SqlConnection(GetConnectionString()))
             {
                 using (SqlCommand command = new SqlCommand("Costumes_GetList", connection))
@@ -31,12 +32,24 @@ namespace CST465Lab5.Repositories
                     {
                         while (reader.Read())
                         {
-                            candy.Add(reader["Costume"].ToString());
+                            int id = (int)reader["Id"];
+                            string name = reader["Costume"].ToString();
+                            costume.Add(new CostumeModel() {Id = id, Name = name });
                         }
                     }
                 }
             }
-            return candy;
+            return costume;
+        }
+        public List<string> GetListString()
+        {
+            List<CostumeModel> costume = GetList();
+            List<string> costumeString = new List<string>();
+            foreach (var c in costume)
+            {
+                costumeString.Add(c.Name);
+            }
+            return costumeString;
         }
         public void Insert(string costume)
         {
